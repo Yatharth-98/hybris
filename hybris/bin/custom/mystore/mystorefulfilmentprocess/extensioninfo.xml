@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+        	
+    
+    <extension abstractclassprefix="Generated" classprefix="MystoreFulfilmentProcess" managername="MystoreFulfilmentProcessManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="mystorefulfilmentprocess">
+                		
+        
+        <requires-extension name="acceleratorservices"/>
+                		
+        
+        <requires-extension name="ticketsystem"/>
+                		
+        
+        <coremodule generated="true" manager="com.mystore.fulfilmentprocess.jalo.MystoreFulfilmentProcessManager" packageroot="com.mystore.fulfilmentprocess"/>
+                		
+        
+        <meta key="extgen-template-extension" value="true"/>
+                		
+        
+        	
+    
+    </extension>
+        
+
+</extensioninfo>

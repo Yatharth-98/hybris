@@ -1,0 +1,52 @@
+
+$contentCatalog=electronicsContentCatalog
+
+$contentCatalogName=Electronics Content Catalog
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+$productCatalog=electronicsProductCatalog
+
+$productCatalogName=Electronics Product Catalog
+
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+
+$siteResource=jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/contentCatalogs/$contentCatalog
+
+$medias=medias(code, $contentCV);
+
+$mediaContainer=media(qualifier, $contentCV);
+
+$product=product(code, $productCV)
+
+$category=category(code, $productCV)
+
+$jarResourceCms=jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/cockpits/cmscockpit
+
+$media=media(code, $contentCV);
+
+$productResource=jar:de.hybris.platform.electronicsstore.constants.ElectronicsstoreConstants&/electronicsstore/import/sampledata/productCatalogs/$productCatalog 
+
+UPDATE CMSLinkComponent ; $contentCV[unique=true] ; uid[unique=true]      ; name                   ; url                ; &linkRef              ; &componentRef         ; target(code)[default='sameWindow'] ; $category ; $product ;
+
+                        ;                         ; RegisteredProductLink ; Benefits of Registered ; /registeredProduct ; RegisteredProductLink ; RegisteredProductLink ; newWindow                          ;           ;          ;   
+
+UPDATE CMSNavigationNode ; uid[unique=true]   ; $contentCV[unique=true] ; children(uid,$contentCV)[mode=append]
+
+                         ; SAPCommerceNavNode ;                         ; RegisteredProductNavNode            
+  # children of above navigation nodes #
+
+INSERT_UPDATE CMSNavigationNode ; uid[unique=true]         ; $contentCV[unique=true] ; name                   ; &nodeRef                ; children(uid,$contentCV) ; links(&linkRef) ;  
+
+                                ; RegisteredProductNavNode ;                         ; Benefits of Registered ; RegisteredProductNavNode
+
+# entries of the above navigation nodes ##
+
+INSERT_UPDATE CMSNavigationEntry ; uid[unique=true]              ; $contentCV[unique=true] ; name                   ; navigationNode(&nodeRef) ; item(CMSLinkComponent.uid,CMSLinkComponent.$contentCV) ;  
+
+                                 ; RegisteredProductNavNodeEntry ;                         ; Benefits of Registered ; RegisteredProductNavNode ; RegisteredProductLink                                  ;  
+
+UPDATE CMSNavigationNode ; uid[unique=true] ; $contentCV[unique=true] ; name         ; parent(uid, $contentCV)       ; children(uid,$contentCV)                                        
+
+                         ; FooterNavNode    ;                         ; Footer Pages ; ElectronicsNavNode       ; SAPCommerceNavNode,SAPCustomerExperienceNavNode,FollowUsNavNode
+

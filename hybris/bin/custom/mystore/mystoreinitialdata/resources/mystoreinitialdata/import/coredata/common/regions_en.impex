@@ -1,0 +1,56 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import Regions
+# Full country list conforming to ISO 3166-1 alpha-2
+#
+
+# Language
+$lang = en
+
+# Create Countries
+UPDATE Region; isocode[unique = true]; name[lang = $lang]
+             ; IN-AN                 ; Andaman and Nicobar Islands
+             ; IN-AP                 ; Andhra Pradesh
+             ; IN-AR                 ; Arunachal Pradesh
+             ; IN-AS                 ; Assam
+             ; IN-BR                 ; Bihar
+             ; IN-CH                 ; Chandigarh
+             ; IN-CG                 ; Chhattisgarh
+             ; IN-DL                 ; Delhi
+             ; IN-DN                 ; Dadra and Nagar Haveli and Daman and Diu
+             ; IN-GA                 ; Goa
+             ; IN-GJ                 ; Gujarat
+             ; IN-HR                 ; Haryana
+             ; IN-HP                 ; Himachal Pradesh
+             ; IN-JK                 ; Jammu and Kashmir
+             ; IN-JH                 ; Jharkhand
+             ; IN-KA                 ; Karnataka
+             ; IN-KL                 ; Kerala
+             ; IN-LA                 ; Ladakh
+             ; IN-LD                 ; Lakshadweep
+             ; IN-MP                 ; Madhya Pradesh
+             ; IN-MH                 ; Maharashtra
+             ; IN-MN                 ; Manipur
+             ; IN-ML                 ; Meghalaya
+             ; IN-MZ                 ; Mizoram
+             ; IN-NL                 ; Nagaland
+             ; IN-OR                 ; Odisha
+             ; IN-PY                 ; Puducherry
+             ; IN-PB                 ; Punjab
+             ; IN-RJ                 ; Rajasthan
+             ; IN-SK                 ; Sikkim
+             ; IN-TN                 ; Tamil Nadu
+             ; IN-TS                 ; Telangana
+             ; IN-TR                 ; Tripura
+             ; IN-UP                 ; Uttar Pradesh
+             ; IN-UK                 ; Uttarakhand
+             ; IN-WB                 ; West Bengal

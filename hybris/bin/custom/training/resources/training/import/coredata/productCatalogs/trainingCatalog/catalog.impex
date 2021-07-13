@@ -1,0 +1,6 @@
+INSERT_UPDATE Catalog ; id[unique=true] ; name[lang=en]   
+                      ; trainingCatalog ; Training Catalog
+                      
+INSERT_UPDATE CatalogVersion ; catalog(id)[unique=true] ; version[unique=true] ; active
+                             ; trainingCatalog          ; Staged               ; false 
+                             ; trainingCatalog          ; Online               ; true  

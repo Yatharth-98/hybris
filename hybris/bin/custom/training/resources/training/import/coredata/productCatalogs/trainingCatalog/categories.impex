@@ -1,0 +1,8 @@
+$catalogVersion=catalogVersion(catalog(id[default=trainingCatalog]), version[default=Staged])[default=trainingCatalog:Staged]
+$language=en
+ 
+INSERT_UPDATE Category ; code[unique=true] ; $catalogVersion[unique=true] ; name[lang=$language]
+                       ; vehicle           ;                              ; Vehicles            
+                       ; bike001           ;                              ; Bikes               
+                       ; cars002           ;                              ; Cars                
+                       ; honda             ;                              ; Honda               

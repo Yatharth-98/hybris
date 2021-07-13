@@ -1,0 +1,18 @@
+$lang=en
+ 
+$catalogVersion=catalogVersion(catalog(id[default=trainingClassification]), version[default=1.0])[default=trainingClassification:1.0]
+ 
+$classificationSystemVersion=systemVersion(catalog(id[default=trainingClassification]), version[default=1.0])[default=trainingClassification:1.0]
+ 
+$visibleTo=allowedPrincipals(uid)
+ 
+$class=classificationClass(code,$catalogVersion)
+$attribute=classificationAttribute(code,$classificationSystemVersion)
+ 
+$values=attributeValues(code,$classificationSystemVersion)
+ 
+
+INSERT_UPDATE ClassAttributeAssignment ; $class[unique=true] ; $attribute[unique=true] ; description[lang=$lang]      ; $classificationSystemVersion ; mandatory ; searchable ; attributeType(code) ; $values
+                                       ; cc_car              ; ca_hp                   ; Horse Power of the Car       ;                              ; true      ; true       ; number              
+                                       ; cc_car              ; ca_fuelType             ; Fuel type for the car        ;                              ; true      ; true       ; enum                ;        
+                                       ; cc_bike             ; ca_kickStart            ; If bike available with kick? ;                              ; true      ; true       ; boolean             

@@ -1,0 +1,7 @@
+$lang=en
+ 
+INSERT_UPDATE ClassificationSystem ; id[unique=true]        ; name[lang=$lang]       
+                                   ; trainingClassification ; Training Classification
+                                   
+INSERT_UPDATE ClassificationSystemVersion ; catalog(id)[unique=true] ; version[unique] ; active
+                                          ; trainingClassification   ; 1.0             ; true  

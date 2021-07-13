@@ -1,0 +1,10 @@
+$lang=en
+ 
+$classificationSystemVersion=systemVersion(catalog(id[default=trainingClassification]), version[default=1.0])[default=trainingClassification:1.0]
+ 
+$visibleTo=allowedPrincipals(uid)
+ 
+INSERT_UPDATE ClassificationAttributeValue ; code[unique=true] ; $classificationSystemVersion[unique=true] ; name[lang=$lang] ;  
+                                           ; gasoline          ;                                           ; Gasoline         
+                                           ; diesel            ;                                           ; Diesel           
+                                           ; ethenol           ;                                           ; Ethenol          

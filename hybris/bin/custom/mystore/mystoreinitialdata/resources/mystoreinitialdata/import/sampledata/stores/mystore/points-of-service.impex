@@ -1,0 +1,191 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for mystore Store
+#% impex.setLocale( Locale.GERMAN ); 
+
+$storeUid = mystore
+$productCatalog = mystoreProductCatalog
+$catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$storeImage = storeImage(qualifier, $catalogVersion)
+
+
+$standardHours = mystore-india-standard-hours
+$weekendHours = mystore-india-weekend-hours
+
+INSERT_UPDATE OpeningSchedule; code[unique = true];
+                             ; $standardHours     ;
+                             ; $weekendHours      ;
+
+INSERT_UPDATE WeekdayOpeningDay; openingSchedule(code)[unique = true]; dayOfWeek(code)[unique = true]; openingTime[dateformat = hh:mm]; closingTime[dateformat = hh:mm];
+                               ; $standardHours                      ; MONDAY                        ; 09:00                          ; 20:00
+                               ; $standardHours                      ; TUESDAY                       ; 09:00                          ; 20:00
+                               ; $standardHours                      ; WEDNESDAY                     ; 09:00                          ; 20:00
+                               ; $standardHours                      ; THURSDAY                      ; 09:00                          ; 20:00
+                               ; $standardHours                      ; FRIDAY                        ; 09:00                          ; 20:00
+                               ; $standardHours                      ; SATURDAY                      ; 10:00                          ; 20:00
+
+                               ; $weekendHours                       ; MONDAY                        ; 09:00                          ; 20:00
+                               ; $weekendHours                       ; TUESDAY                       ; 09:00                          ; 20:00
+                               ; $weekendHours                       ; WEDNESDAY                     ; 09:00                          ; 20:00
+                               ; $weekendHours                       ; THURSDAY                      ; 09:00                          ; 20:00
+                               ; $weekendHours                       ; FRIDAY                        ; 09:00                          ; 20:00
+                               ; $weekendHours                       ; SATURDAY                      ; 10:00                          ; 20:00
+                               ; $weekendHours                       ; SUNDAY                        ; 10:00                          ; 16:00
+
+
+INSERT_UPDATE SpecialOpeningDay; openingSchedule(code)[unique = true]; date[unique = true, dateformat = dd.MM.yyyy]; closed; openingTime[dateformat = hh:mm]; closingTime[dateformat = hh:mm]
+                               ; $standardHours                      ; 01.01.2014                                  ; true
+                               ; $standardHours                      ; 14.01.2014                                  ; true
+                               ; $standardHours                      ; 11.02.2014                                  ; true
+                               ; $standardHours                      ; 20.03.2014                                  ; true
+                               ; $standardHours                      ; 29.04.2014                                  ; true
+                               ; $standardHours                      ; 03.05.2014                                  ; true
+                               ; $standardHours                      ; 04.05.2014                                  ; true
+                               ; $standardHours                      ; 05.05.2014                                  ; true
+                               ; $standardHours                      ; 15.07.2014                                  ; true
+                               ; $standardHours                      ; 16.09.2014                                  ; true
+                               ; $standardHours                      ; 23.09.2014                                  ; true
+                               ; $standardHours                      ; 14.10.2014                                  ; true
+                               ; $standardHours                      ; 03.11.2014                                  ; true
+                               ; $standardHours                      ; 23.11.2014                                  ; true
+                               ; $standardHours                      ; 23.12.2014                                  ; true
+
+                               ; $weekendHours                       ; 01.01.2014                                  ; true
+                               ; $weekendHours                       ; 14.01.2014                                  ; true
+                               ; $weekendHours                       ; 11.02.2014                                  ; true
+                               ; $weekendHours                       ; 20.03.2014                                  ; true
+                               ; $weekendHours                       ; 29.04.2014                                  ; true
+                               ; $weekendHours                       ; 03.05.2014                                  ; true
+                               ; $weekendHours                       ; 04.05.2014                                  ; true
+                               ; $weekendHours                       ; 05.05.2014                                  ; true
+                               ; $weekendHours                       ; 15.07.2014                                  ; true
+                               ; $weekendHours                       ; 16.09.2014                                  ; true
+                               ; $weekendHours                       ; 23.09.2014                                  ; true
+                               ; $weekendHours                       ; 14.10.2014                                  ; true
+                               ; $weekendHours                       ; 03.11.2014                                  ; true
+                               ; $weekendHours                       ; 23.11.2014                                  ; true
+                               ; $weekendHours                       ; 23.12.2014                                  ; true
+
+
+INSERT_UPDATE PointOfService; name[unique = true]; type(code); address(&addrID); latitude ; longitude            ; geocodeTimestamp[dateformat = dd/MM/yy]; $storeImage; openingSchedule(code); basestore(uid)[default = $storeUid]; features(code)
+                            ; Amritsar           ; STORE     ; addr1           ;;; 29/04/25 ; electronics_store_01 ; $standardHours
+                            ; Mumbai             ; STORE     ; addr2           ;;; 29/04/25 ; electronics_store_02 ; $standardHours
+                            ; Chandigarh         ; STORE     ; addr3           ;;; 29/04/25 ;                      ; $standardHours
+                            ; Shimla             ; STORE     ; addr4           ;;; 29/04/25 ; electronics_store_01 ; $weekendHours
+                            ; Karnal             ; STORE     ; addr5           ;;; 29/04/25 ;                      ; $standardHours
+                            ; Dehradun           ; STORE     ; addr6           ;;; 29/04/25 ; electronics_store_03 ; $weekendHours
+                            ; Srinagar           ; STORE     ; addr7           ;;; 29/04/25 ; electronics_store_01 ; $standardHours
+                            ; Leh                ; STORE     ; addr8           ;;; 29/04/25 ; electronics_store_02 ; $weekendHours
+                            ; Delhi              ; STORE     ; addr9           ;;; 29/04/25 ; electronics_store_03 ; $standardHours
+                            ; Noida              ; STORE     ; addr200         ;;; 29/04/25 ; electronics_store_01 ; $standardHours
+                            ; Patna              ; STORE     ; addr201         ;;; 29/04/25 ; electronics_store_02 ; $standardHours
+                            ; Gurugram           ; STORE     ; addr202         ;;; 29/04/25 ;                      ; $standardHours
+                            ; Jaipur             ; STORE     ; addr203         ;;; 29/04/25 ; electronics_store_01 ; $weekendHours
+                            ; Ranchi             ; STORE     ; addr204         ;;; 29/04/25 ;                      ; $standardHours
+                            ; Kolkata            ; STORE     ; addr205         ;;; 29/04/25 ; electronics_store_03 ; $weekendHours
+                            ; North East         ; STORE     ; addr206         ;;; 29/04/25 ; electronics_store_01 ; $standardHours
+                            ; Indore             ; STORE     ; addr207         ;;; 29/04/25 ; electronics_store_02 ; $weekendHours
+                            ; Bilaspur           ; STORE     ; addr208         ;;; 29/04/25 ; electronics_store_03 ; $standardHours
+                            ; Bhubneshwar        ; STORE     ; addr209         ;;; 29/04/25 ; electronics_store_01 ; $standardHours
+                            ; Amravati           ; STORE     ; addr210         ;;; 29/04/25 ; electronics_store_02 ; $standardHours
+                            ; Hyderabad          ; STORE     ; addr211         ;;; 29/04/25 ;                      ; $standardHours
+                            ; Ahamedabad         ; STORE     ; addr212         ;;; 29/04/25 ; electronics_store_01 ; $weekendHours
+                            ; Pune               ; STORE     ; addr213         ;;; 29/04/25 ;                      ; $standardHours
+                            ; Goa                ; STORE     ; addr214         ;;; 29/04/25 ; electronics_store_03 ; $weekendHours
+                            ; Bengaluru          ; STORE     ; addr215         ;;; 29/04/25 ; electronics_store_01 ; $standardHours
+                            ; Chennai            ; STORE     ; addr216         ;;; 29/04/25 ; electronics_store_02 ; $weekendHours
+                            ; Thiruvanantpuram   ; STORE     ; addr217         ;;; 29/04/25 ; electronics_store_03 ; $standardHours
+
+INSERT_UPDATE Address; &addrID ; streetname ; streetnumber; postalcode[unique = true]; town[unique = true]; country(isocode); region(isocode); phone1        ; owner(PointOfService.name)[unique = true]
+                     ; addr1   ; Address 1  ; 13          ;                          ; Amritsar           ; IN              ; IN-PB          ; +91 1988 3600 ; Amritsar
+                     ; addr2   ; Address 2  ; 20          ;                          ; Mumbai             ; IN              ; IN-MH          ; +91 4649 8891 ; Mumbai
+                     ; addr3   ; Address 3  ; 10          ;                          ; Chandigarh         ; IN              ; IN-CH          ; +91 6176 3426 ; Chandigarh
+                     ; addr4   ; Address 4  ;             ;                          ; Shimla             ; IN              ; IN-HP          ; +91 4376 5760 ; Shimla
+                     ; addr5   ; Address 5  ;             ;                          ; Karnal             ; IN              ; IN-HR          ; +91 3519 4163 ; Karnal
+                     ; addr6   ; Address 6  ;             ;                          ; Dehradun           ; IN              ; IN-UK          ; +91 666 563   ; Dehradun
+                     ; addr7   ; Address 7  ;             ;                          ; Srinagar           ; IN              ; IN-JK          ; +91 501 6516  ; Srinagar
+                     ; addr8   ; Address 8  ;             ;                          ; Leh                ; IN              ; IN-JK          ; +91 8916 4281 ; Leh
+                     ; addr9   ; Address 9  ;             ;                          ; Delhi              ; IN              ; IN-DL          ; +91 9583 8863 ; Delhi
+                     ; addr200 ; Address 10 ; 26-01       ;                          ; Noida              ; IN              ; IN-UP          ; +91 5141 3298 ; Noida
+                     ; addr201 ; Address 11 ; 5-43-7      ;                          ; Patna              ; IN              ; IN-BR          ; +91 3550 9246 ; Patna
+                     ; addr202 ; Address 12 ; 2-20-4      ;                          ; Gurugram           ; IN              ; IN-HR          ; +91 7684 8185 ; Gurugram
+                     ; addr203 ; Address 13 ; 2-20-4      ;                          ; Jaipur             ; IN              ; IN-RJ          ; +91 6180 548  ; Jaipur
+                     ; addr204 ; Address 14 ; 01.07.2001  ;                          ; Ranchi             ; IN              ; IN-JH          ; +91 7093 958  ; Ranchi
+                     ; addr205 ; Address 15 ; 1-101-1     ;                          ; Kolkata            ; IN              ; IN-WB          ; +91 1114 9907 ; Kolkata
+                     ; addr206 ; Address 16 ; 03-04       ;                          ; North East         ; IN              ;                ; +91 1006 1478 ; North East
+                     ; addr207 ; Address 17 ; 03 33       ;                          ; Indore             ; IN              ; IN-MP          ; +91 4220 68   ; Indore
+                     ; addr208 ; Address 18 ; 10          ;                          ; Bilaspur           ; IN              ; IN-CG          ; +91 6734 1664 ; Bilaspur
+                     ; addr209 ; Address 19 ; 72          ;                          ; Bhubneshwar        ; IN              ; IN-OR          ; +91 441 7148  ; Bhubneshwar
+                     ; addr210 ; Address 20 ; 08-10       ;                          ; Amravati           ; IN              ; IN-AP          ; +91 6733 7883 ; Amravati
+                     ; addr211 ; Address 21 ; 01.03.2001  ;                          ; Hyderabad          ; IN              ; IN-TS          ; +91 8490 5589 ; Hyderabad
+                     ; addr212 ; Address 22 ; 3-16-19     ;                          ; Ahamedabad         ; IN              ; IN-GJ          ; +91 9068 703  ; Ahamedabad
+                     ; addr213 ; Address 23 ; 02.05.2015  ;                          ; Pune               ; IN              ; IN-MH          ; +91 2874 4274 ; Pune
+                     ; addr214 ; Address 24 ; 01.02.2019  ;                          ; Goa                ; IN              ; IN-GA          ; +91 4535 1332 ; Goa
+                     ; addr215 ; Address 25 ; 03-03       ;                          ; Bengaluru          ; IN              ; IN-KA          ; +91 358 3977  ; Bengaluru
+                     ; addr216 ; Address 26 ; 01.01.2004  ;                          ; Chennai            ; IN              ; IN-TN          ; +91 9550 891  ; Chennai
+                     ; addr217 ; Address 27 ; 01.01.2001  ;                          ; Thiruvanantpuram   ; IN              ; IN-KL          ; +91 9352 7328 ; Thiruvanantpuram
+INSERT_UPDATE StoreLocatorFeature; code[unique = true]
+                                 ; wheelchair
+                                 ; creche
+                                 ; sundayWorkshops
+                                 ; buyOnlinePickupInStore
+
+UPDATE PointOfService; name[unique = true]; features(code);
+                     ; Amritsar           ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Mumbai             ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Chandigarh         ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Shimla             ; wheelchair,buyOnlinePickupInStore
+                     ; Karnal             ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Dehradun           ; wheelchair,buyOnlinePickupInStore
+                     ; Srinagar           ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Leh                ; wheelchair,buyOnlinePickupInStore
+                     ; Delhi              ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Noida              ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Patna              ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Gurugram           ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Jaipur             ; wheelchair,buyOnlinePickupInStore
+                     ; Ranchi             ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Kolkata            ; wheelchair,buyOnlinePickupInStore
+                     ; North East         ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Indore             ; wheelchair,buyOnlinePickupInStore
+                     ; Bilaspur           ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Bhubneshwar        ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Amravati           ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Hyderabad          ; wheelchair,creche,buyOnlinePickupInStore
+                     ; Ahamedabad         ; wheelchair,buyOnlinePickupInStore
+                     ; Pune               ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Goa                ; wheelchair,buyOnlinePickupInStore
+                     ; Bengaluru          ; creche,sundayWorkshops,buyOnlinePickupInStore
+                     ; Chennai            ; wheelchair,buyOnlinePickupInStore
+                     ; Thiruvanantpuram   ; creche,sundayWorkshops,buyOnlinePickupInStore
+
+INSERT_UPDATE PoS2WarehouseRel; source(name)[unique = true]; target(code)[unique = true]
+                              ; Amritsar                   ; Amritsar
+                              ; Mumbai                     ; Mumbai
+                              ; Chandigarh                 ; Chandigarh
+                              ; Shimla                     ; Shimla
+                              ; Karnal                     ; Karnal
+                              ; Dehradun                   ; Dehradun
+                              ; Srinagar                   ; Srinagar
+                              ; Leh                        ; Leh
+                              ; Delhi                      ; Delhi
+                              ; Noida                      ; Noida
+                              ; Patna                      ; Patna
+                              ; Gurugram                   ; Gurugram
+                              ; Jaipur                     ; Jaipur
+                              ; Ranchi                     ; Ranchi
+                              ; Kolkata                    ; Kolkata
+                              ; North East                 ; North East
+                              ; Indore                     ; Indore
+                              ; Bilaspur                   ; Bilaspur
+                              ; Bhubneshwar                ; Bhubneshwar
+                              ; Amravati                   ; Amravati
+                              ; Hyderabad                  ; Hyderabad
+                              ; Ahamedabad                 ; Ahamedabad
+                              ; Pune                       ; Pune
+                              ; Goa                        ; Goa
+                              ; Bengaluru                  ; Bengaluru
+                              ; Chennai                    ; Chennai
+                              ; Thiruvanantpuram           ; Thiruvanantpuram
+

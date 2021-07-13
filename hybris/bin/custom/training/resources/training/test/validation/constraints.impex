@@ -1,0 +1,6 @@
+INSERT_UPDATE ConstraintGroup;id[unique=true];interfaceName
+#;default;javax.validation.groups.Default;
+;testConstraintGroup;org.training.validation.groupinterfaces.TrainingValidationGroup
+
+INSERT_UPDATE NotNullConstraint;id[unique=true];active;type(code);descriptor(qualifier, enclosingType(code));severity(code);constraintGroups(id)
+;productManufacturerNameNotNullContstraint;true;Product;manufacturerName:Product;ERROR;testConstraintGroup

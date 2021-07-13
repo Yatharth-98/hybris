@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2020 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+
+	<enumtypes>
+		<enumtype code="FuelType">
+			<value code="gasoline"/>
+			<value code="diesel"/>
+			<value code="ethenol"/>
+		</enumtype>
+		
+		<enumtype code="CategoryType">
+			<value code="display"/>
+			<value code="virtual"/>
+		</enumtype>
+	</enumtypes>
+	
+	<maptypes>
+		<maptype argumenttype="java.lang.String" returntype="java.lang.Double" code="SubjectScore"/>
+	</maptypes>
+	
+	<relations>
+		<relation localized="false" code="CarsDriverRelation">
+			<deployment table="carsdriversrelation" typecode="20002"/>
+			<sourceElement type="Car" qualifier="cars" cardinality="many"/>
+			<targetElement type="Employee" qualifier="drivers" cardinality="many" collectiontype="set"/>
+		</relation>
+	</relations>
+
+	<itemtypes>
+
+		<itemtype code="Student">
+			<deployment table="students" typecode="20001"/>
+			<attributes>
+				<attribute type="java.lang.String" qualifier="id">
+					<modifiers unique="true" optional="false"/>
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="localized:java.lang.String" qualifier="name">
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="SubjectScore" qualifier="scores">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+			<indexes>
+				<index name="idx_student_id" unique="true">
+					<key attribute="id"/>
+				</index>
+			</indexes>
+		</itemtype>
+		
+		<!--  Adding attributes to existing types -->
+		<itemtype code="Category" autocreate="false" generate="false">
+			<attributes>
+				<attribute type="CategoryType" qualifier="categoryType">
+					<modifiers optional="false"/>
+					<persistence type="property"/>
+					<defaultvalue>em().getEnumerationValue("CategoryType","display")</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+		
+		<itemtype code="Car" extends="Product">
+			<attributes>
+				<attribute type="java.lang.Integer" qualifier="hp">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>java.lang.Integer.valueOf(0)</defaultvalue>
+					<description>Horse Power</description>
+				</attribute>
+				<attribute type="java.lang.Integer" qualifier="kw">
+				<persistence type="dynamic" attributeHandler="kilowattAttributeHandler"/>
+					<modifiers write="false"/>
+					<description>Kilowatt</description>
+				</attribute>
+				<attribute type="FuelType" qualifier="fuelType">
+					<description>Fuel type for this car</description>
+					<persistence type="property"/>
+				</attribute>
+				
+				<attribute type="Employee" qualifier="mechanic">
+					<persistence type="property"/>
+				</attribute>
+				
+			</attributes>
+		</itemtype>
+
+	</itemtypes>
+</items>

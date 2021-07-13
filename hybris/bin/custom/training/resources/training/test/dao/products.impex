@@ -1,0 +1,7 @@
+$catalogVersion=catalogVersion(catalog(id[default=Default]),version[default=Staged])[default=Default:Staged]
+
+INSERT_UPDATE Product;code[unique=true];$catalogVersion;name[lang=en];approvalStatus(code);manufacturerName
+;p001;;Bravia Android LED TV;approved;Sony
+;p002;;Bravia Android QLED TV;approved;Sony
+;p003;;Curved OLED TV;approved;LG
+;p004;;QLED TV;approved;Samsung 

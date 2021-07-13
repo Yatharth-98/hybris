@@ -1,0 +1,5 @@
+$catalogVersion=catalogVersion(catalog(id[default=Default]),version[default=Online])[default=Default:Online]
+
+INSERT_UPDATE Car;code[unique=true];$catalogVersion;name[lang=en];hp;fuelType(code);approvalStatus(code)
+;001;;City;1000;gasoline;approved
+;002;;Verna;0;gasoline;approved

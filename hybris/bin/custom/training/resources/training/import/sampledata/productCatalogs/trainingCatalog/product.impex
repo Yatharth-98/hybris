@@ -1,0 +1,7 @@
+$catalogVersion=catalogVersion(catalog(id[default=trainingCatalog]), version[default=Staged])[default=trainingCatalog:Staged]
+ 
+$lang=en
+ 
+INSERT_UPDATE Product ; code[unique=true] ; $catalogVersion ; name[lang=$lang] ; unit(code) ; description[lang=$lang]           ; manufacturerName ; approvalStatus(code)
+                      ; 001               ;                 ; City             ; pieces     ; The popular Honda mid size sedan. ; Honda            ; approved            
+                      

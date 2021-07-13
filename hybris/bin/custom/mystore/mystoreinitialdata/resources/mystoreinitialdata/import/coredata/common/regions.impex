@@ -1,0 +1,54 @@
+# -----------------------------------------------------------------------
+# [y] hybris Platform
+#
+# Copyright (c) 2018 SAP SE or an SAP affiliate company.  All rights reserved.
+#
+# This software is the confidential and proprietary information of SAP
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with SAP.
+# -----------------------------------------------------------------------
+#
+# Import Regions
+#
+
+#
+# ISO 3166-2:IN
+#
+INSERT_UPDATE Region; country(isocode); isocode[unique = true]; isocodeShort; name[lang = en]; active[default = true]
+                    ; IN              ; IN-AN                 ; AN          ; Andaman and Nicobar Islands
+                    ; IN              ; IN-AP                 ; AP          ; Andhra Pradesh
+                    ; IN              ; IN-AR                 ; AR          ; Arunachal Pradesh
+                    ; IN              ; IN-AS                 ; AS          ; Assam
+                    ; IN              ; IN-BR                 ; BR          ; Bihar
+                    ; IN              ; IN-CH                 ; CH          ; Chandigarh
+                    ; IN              ; IN-CG                 ; CG          ; Chhattisgarh
+                    ; IN              ; IN-DL                 ; DL          ; Delhi
+                    ; IN              ; IN-DN                 ; DN          ; Dadra and Nagar Haveli and Daman and Diu
+                    ; IN              ; IN-GA                 ; GA          ; Goa
+                    ; IN              ; IN-GJ                 ; GJ          ; Gujarat
+                    ; IN              ; IN-HR                 ; HR          ; Haryana
+                    ; IN              ; IN-HP                 ; HP          ; Himachal Pradesh
+                    ; IN              ; IN-JK                 ; JK          ; Jammu and Kashmir
+                    ; IN              ; IN-JH                 ; JH          ; Jharkhand
+                    ; IN              ; IN-KA                 ; KA          ; Karnataka
+                    ; IN              ; IN-KL                 ; KL          ; Kerala
+                    ; IN              ; IN-LA                 ; LA          ; Ladakh
+                    ; IN              ; IN-LD                 ; LD          ; Lakshadweep
+                    ; IN              ; IN-MP                 ; MP          ; Madhya Pradesh
+                    ; IN              ; IN-MH                 ; MH          ; Maharashtra
+                    ; IN              ; IN-MN                 ; MN          ; Manipur
+                    ; IN              ; IN-ML                 ; ML          ; Meghalaya
+                    ; IN              ; IN-MZ                 ; MZ          ; Mizoram
+                    ; IN              ; IN-NL                 ; NL          ; Nagaland
+                    ; IN              ; IN-OR                 ; OR          ; Odisha
+                    ; IN              ; IN-PY                 ; PY          ; Puducherry
+                    ; IN              ; IN-PB                 ; PB          ; Punjab
+                    ; IN              ; IN-RJ                 ; RJ          ; Rajasthan
+                    ; IN              ; IN-SK                 ; SK          ; Sikkim
+                    ; IN              ; IN-TN                 ; TN          ; Tamil Nadu
+                    ; IN              ; IN-TS                 ; TS          ; Telangana
+                    ; IN              ; IN-TR                 ; TR          ; Tripura
+                    ; IN              ; IN-UP                 ; UP          ; Uttar Pradesh
+                    ; IN              ; IN-UK                 ; UK          ; Uttarakhand
+                    ; IN              ; IN-WB                 ; WB          ; West Bengal

@@ -1,0 +1,12 @@
+$lang=en
+ 
+$classificationSystemVersion=systemVersion(catalog(id[default=trainingClassification]), version[default=1.0])[default=trainingClassification:1.0]
+ 
+$visibleTo=allowedPrincipals(uid)
+ 
+$defaultValues=defaultAttributeValues(code,$classificationSystemVersion)
+ 
+INSERT_UPDATE ClassificationAttribute ; code[unique=true] ; $classificationSystemVersion[unique=true] ; name[lang=$lang]       ; $defaultValues         
+                                      ; ca_kickStart      ;                                           ; Is kickStart available?
+                                      ; ca_hp             ;                                           ; Horse Power            
+                                      ; ca_fuelType       ;                                           ; FuelType               ; ethenol,diesel,gasoline

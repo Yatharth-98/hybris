@@ -1,0 +1,14 @@
+$catalogVersion=catalogVersion(catalog(id[default=trainingCatalog]), version[default=Staged])[default=trainingCatalog:Staged]
+$supercategory=source(code, $catalogVersion)
+$subcategory=target(code,$catalogVersion)
+ 
+$visibleTo=allowedPrincipals(uid)[default=customergroup]
+
+$resourcesPath=jar:org.training.constants.TrainingConstants&
+ 
+INSERT_UPDATE Category ; code[unique=true] ; $catalogVersion[unique=true] ; name[lang=en] ; $visibleTo ; picture(code,$catalogVersion)
+                       ; cars002           ;                              ; Cars          ;            ; car.jpeg                     
+                       
+
+INSERT_UPDATE Media ; code[unique=true] ; $catalogVersion[unique=true] ; @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+                    ; car.jpeg          ;                              ; $resourcesPath/impex/media/car.jpeg                                       

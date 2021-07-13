@@ -1,0 +1,8 @@
+$catalogVersion=catalogVersion(catalog(id[default=trainingCatalog]), version[default=Staged])[default=trainingCatalog:Staged]
+ 
+$sourceCategory=source(code,$catalogVersion)
+$targetProduct=target(code,$catalogVersion)
+ 
+INSERT_UPDATE CategoryProductRelation ; $sourceCategory[unique=true] ; $targetProduct[unique=true]
+                                      ; cars002                      ; 001                        
+                                      ; honda                        ; 001                        

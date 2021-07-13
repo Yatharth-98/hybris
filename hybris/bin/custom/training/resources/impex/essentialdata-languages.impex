@@ -1,0 +1,7 @@
+$lang=en
+INSERT_UPDATE Language;isocode[unique=true];name[lang=$lang];active
+;mr;Marathi;true
+
+
+INSERT_UPDATE NotNullConstraint;id[unique=true];active;type(code);descriptor(qualifier, enclosingType(code));severity(code);constraintGroups(id)
+;productManufacturerNameNotNullContstraint;true;Product;manufacturerName:Product;ERROR;defaultBackofficeValidationGroup

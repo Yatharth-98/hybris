@@ -1,0 +1,9 @@
+$lang=en
+ 
+$classificationSystemVersion=catalogVersion(catalog(id[default=trainingClassification]), version[default=1.0])[default=trainingClassification:1.0]
+ 
+$visibleTo=allowedPrincipals(uid)
+ 
+INSERT_UPDATE ClassificationClass ; code[unique=true] ; $classificationSystemVersion ; name[lang=$lang]    ; $visibleTo   
+                                  ; cc_car            ;                              ; Car Classification  ; customergroup
+                                  ; cc_bike           ;                              ; Bike Classification ; customergroup

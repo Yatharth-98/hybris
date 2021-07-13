@@ -1,0 +1,16 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+INSERT_UPDATE BackofficeSavedQuery;typeCode[unique=true];name[lang=en,unique=true];globalOperatorCode;queryOwner(uid)[unique=true];sortAsc;&savedQueryRef;searchMode[default=ADVANCED];
+;CsTicket;"My Assigned Tickets";"and";"CustomerSupportAdministrator";true;csAdmin;
+;CsTicket;"My Assigned Tickets";"and";"CustomerSupportManager";true;csMgr;
+;CsTicket;"My Assigned Tickets";"and";"CustomerSupportAgent";true;csAgent;
+
+INSERT_UPDATE BackofficeSearchCondition;value[unique=true];attribute;selected;operatorCode;valueReference(Employee.uid)[mode=replace,unique=true];savedQuery(&savedQueryRef)[unique=true];
+;;assignedAgent;true;equals;CustomerSupportAdministrator;csAdmin;
+;;assignedAgent;true;equals;CustomerSupportManager;csMgr;
+;;assignedAgent;true;equals;CustomerSupportAgent;csAgent;
+
+;CsTicketState#OPEN;state;true;equals;;csAdmin;
+;CsTicketState#OPEN;state;true;equals;;csMgr;
+;CsTicketState#OPEN;state;true;equals;;csAgent;

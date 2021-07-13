@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<config xmlns="http://www.hybris.com/cockpit/config"
+	xmlns:na="http://www.hybris.com/cockpitng/config/notifications"
+	xmlns:ea="http://www.hybris.com/cockpitng/component/editorArea"
+	xmlns:et="http://www.hybris.com/cockpitng/config/explorertree"
+	xmlns:lv="http://www.hybris.com/cockpitng/component/listView"
+	xmlns:ss="http://www.hybris.com/cockpitng/config/simplesearch"
+	xmlns:as="http://www.hybris.com/cockpitng/config/advancedsearch"
+	xmlns:y="http://www.hybris.com/cockpit/config/hybris"
+	xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config">
+
+	<context merge-by="module" component="editorareaactions" type="Consignment">
+		<y:actions xmlns:y="http://www.hybris.com/cockpit/config/hybris">
+			<y:group qualifier="common">
+				<y:label>actiongroup.common</y:label>				
+				<y:action action-id="com.mystore.backoffice.actions.confirmpickupaction" property="currentObject"/>				
+			</y:group>
+		</y:actions>
+    </context>
+
+	<!-- Notification Area-->
+	<context component="notification-area">
+	    <na:notification-area>	        
+	        <na:notifications eventType="mystorebackoffice.confirmpickup.event" level="SUCCESS">
+	            <na:message>hmc.action.confirmpickup.success</na:message>
+	        </na:notifications>
+	   </na:notification-area>
+	</context>
+	
+	<context merge-by="type" type="Product" component="editor-area">
+		<ea:editorArea>
+			<ea:tab name="hmc.tab.product.mystore">
+                <ea:section name="hmc.section.mystore.product.properties">
+                    <ea:attribute qualifier="visible"/>
+                </ea:section>
+            </ea:tab>
+		</ea:editorArea>
+	</context>
+	
+	<context merge-by="module" parent="auto" component="explorer-tree">
+		<et:explorer-tree>
+			<et:navigation-node id="hmc_treenode_mystore" merge-mode="append">
+				<et:type-node id="mystore.typenode.billdesk.counter" code="BillDeskCounter"/>
+			</et:navigation-node>
+		</et:explorer-tree>
+	</context>
+	
+	<context type="BillDeskCounter" component="listview">
+		<lv:list-view>
+			<lv:column qualifier="code"/>
+			<lv:column qualifier="manager"/>
+		</lv:list-view>
+	</context>
+	
+	<context merge-by="type" parent="GenericItem" type="BillDeskCounter" component="editor-area">
+		<ea:editorArea>
+			<ea:essentials>
+                <ea:essentialSection name="hmc.essential">
+                    <ea:attribute qualifier="code"/>
+                    <ea:attribute qualifier="manager"/>
+                </ea:essentialSection>
+            </ea:essentials>
+			<ea:tab name="hmc.tab.product.token">
+                <ea:section name="hmc.section.bill.desk.counter.token">
+                    <ea:attribute qualifier="token"/>
+                </ea:section>
+            </ea:tab>
+		</ea:editorArea>
+	</context>
+	
+	<context parent="GenericItem" type="BillDeskCounter" component="simple-search">
+		<ss:simple-search>
+			<ss:field name="code"/>
+		</ss:simple-search>
+	</context>
+	
+	<context parent="GenericItem" type="BillDeskCounter" component="advanced-search">
+		<as:advanced-search>
+			<as:field-list>
+				<as:field name="code" selected="true" operator="contains"/>
+				<as:field name="manager" selected="true"/>
+			</as:field-list>
+		</as:advanced-search>
+	</context>
+	
+	<context type="BillDeskCounter" component="base" merge-by="type" parent="GenericItem">
+        <y:base >
+            <y:labels>
+                <y:label>code</y:label>
+            </y:labels>
+        </y:base>
+    </context>
+    
+    <context merge-by="type" type="BillDeskCounter" component="create-wizard">
+		<wz:flow  id="BillDeskCounterWizard" title="create.title(ctx.TYPE_CODE)">
+			<wz:prepare id="newBillDeskCounter">
+				<wz:initialize property="newBillDeskCounter" type="ctx.TYPE_CODE"/>
+			</wz:prepare>
+			<wz:step id="step1" label="create.bill.desk.essentials">
+				<wz:content id="step1.content">
+					<wz:property-list root="newBillDeskCounter">
+						<wz:property qualifier="code"/>
+						<wz:property qualifier="manager"/>
+					</wz:property-list>
+				</wz:content>
+				<wz:navigation id="step1.navigation">
+					<wz:cancel/>
+					<wz:done>
+						<wz:save property="newBillDeskCounter"/>
+					</wz:done>
+				</wz:navigation>
+			</wz:step>
+		</wz:flow>
+	</context>
+
+</config>

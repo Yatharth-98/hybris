@@ -1,0 +1,10 @@
+$catalogVersion=catalogVersion(catalog(id[default=trainingCatalog]), version[default=Staged])[default=trainingCatalog:Staged]
+
+$resourcesPaths=jar:org.training.constants.TrainingConstants&
+ 
+UPDATE Product ; code[unique=true] ; $catalogVersion[unique=true] ; picture(code,$catalogVersion)
+               ; 001               ;                              ; honda-city.jpeg              
+
+INSERT_UPDATE Media ; code[unique=true] ; $catalogVersion[unique=true] ; @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+                    ; honda-city.jpeg  ;                              ; $resourcesPaths/impex/media/honda-city.jpeg                               
+

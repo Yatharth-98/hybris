@@ -1,0 +1,88 @@
+# -----------------------------------------------------------------------
+# Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+# -----------------------------------------------------------------------
+# ImpEx for Importing Products Store Stock Levels into mystore Store
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Amritsar',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;10;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Mumbai',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;10;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Chandigarh',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;5;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Delhi',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;19;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Dehradun',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;14;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Ranchi',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;11;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Shimla',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;5;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Patna',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;9;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Kolkata',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;9;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Bhubneshwar',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;14;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Karnal',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;6;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Jaipur',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;5;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Indore',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;14;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Ahamedabad',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;16;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Pune',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;10;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Bengaluru',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;10;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Bilaspur',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;5;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Hyderabad',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;8;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Amravati',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;4;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Chennai',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;12;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Thiruvanantpuram',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;9;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Goa',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;14;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Srinagar',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;6;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Lucknow',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;16;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Noida',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;5;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Gurugram',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;5;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='Leh',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;14;;;0;0;1978440_md;0
+
+INSERT_UPDATE StockLevel;available;warehouse(code)[default='North East',unique=true];inStockStatus(code)[default='notSpecified'];overSelling;preOrder;productCode[unique=true];reserved
+;3;;;0;0;1978440_md;0
